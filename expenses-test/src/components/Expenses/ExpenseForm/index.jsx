@@ -2,25 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Input from '../../UI/Input';
 import { useState } from 'react/cjs/react.development';
-
-const formFields = [
-  {
-    label: 'Title',
-    type: 'text',
-  },
-  {
-    label: 'Amount',
-    type: 'number',
-    min: '0.01',
-    step: '0.01',
-  },
-  {
-    label: 'Date',
-    type: 'date',
-    min: '2019-01-01',
-    max: '2022-12-31',
-  },
-];
+import formFields from '../../../data/newExpenseFormFields.json';
+import { FormButton } from '../../UI/Button';
 
 const ExpenseForm = ({ onSaveExpenseData }) => {
   const [userInput, setUserInput] = useState({
@@ -28,11 +11,11 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
     amount: '',
     date: '',
   });
+  const [activeButton, setActiveButton] = useState(true);
 
   const handleInputChange = ({ target: { value } }, key) => {
     setUserInput((input) => ({ ...input, [key]: value }));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -45,6 +28,16 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
     );
     onSaveExpenseData(expenseData);
   };
+  const handleActive = () => {
+    setActiveButton(false);
+  };
+  const handleCancel = () => {
+    setActiveButton(true);
+  };
+
+  if (activeButton) {
+    return <FormButton label='Add New Expense' onClick={handleActive} />;
+  }
 
   return (
     <form action='' onSubmit={handleSubmit}>
@@ -59,11 +52,8 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
         ))}
       </div>
       <div className='text-right'>
-        <button
-          className='cursor-pointer py-4 px-8 border border-solid border-[#40005d] bg-[#40005d] text-white rounded-xl mr-4'
-          type='submit'>
-          Add Expense
-        </button>
+        <FormButton label='Cancel' onClick={handleCancel} />
+        <FormButton label='Add Expense' type='submit' />
       </div>
     </form>
   );

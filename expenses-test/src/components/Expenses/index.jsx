@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import ExpenseItem from './ExpenseItem';
-
 import Card from '../UI/Card';
 import Dropdown from '../UI/Dropdown';
 

@@ -8,7 +8,9 @@ const ExpensesList = ({ items }) => {
   return (
     <ul className='list-none p-0'>
       {items.map(({ id, ...props }) => (
-        <ExpenseItem key={`expense-item-${id}`} {...props} />
+        <li>
+          <ExpenseItem key={`expense-item-${id}`} {...props} />
+        </li>
       ))}
     </ul>
   );

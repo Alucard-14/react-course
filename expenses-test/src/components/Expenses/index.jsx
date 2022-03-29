@@ -6,6 +6,7 @@ import Dropdown from '../UI/Dropdown';
 
 import dropOpts from '../../data/expensesDropdownOpts.json';
 import ExpensesList from './ExpensesList';
+import ExpensesChart from './ExpensesChart';
 
 const Expenses = ({ expenses }) => {
   const [filteredYear, setFilteredYear] = useState('2020');
@@ -32,6 +33,7 @@ const Expenses = ({ expenses }) => {
         selected={filteredYear}
         onFilterChange={handleFilterChange}
       />
+      <ExpensesChart expenses={filteredExpenses} />
       <ExpensesList items={filteredExpenses} />
     </Card>
   );

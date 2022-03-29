@@ -8,8 +8,8 @@ const ExpensesList = ({ items }) => {
   return (
     <ul className='list-none p-0'>
       {items.map(({ id, ...props }) => (
-        <li>
-          <ExpenseItem key={`expense-item-${id}`} {...props} />
+        <li key={`expense-list-item-${id}`}>
+          <ExpenseItem {...props} />
         </li>
       ))}
     </ul>

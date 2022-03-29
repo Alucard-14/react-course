@@ -20,7 +20,7 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
     e.preventDefault();
 
     const expenseData = userInput;
-    expenseData.amount = parseFloat(expenseData.amount);
+    expenseData.amount = +expenseData.amount;
     expenseData.date = new Date(expenseData.date ? expenseData.date : null);
 
     setUserInput((inputs) =>

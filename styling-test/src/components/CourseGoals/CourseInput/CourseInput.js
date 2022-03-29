@@ -25,6 +25,10 @@ const FormControl = styled.div`
     padding: 0 0.25rem;
   }
 
+  @media (min-width: 768px) {
+    width: auto;
+  }
+
   & input:focus {
     outline: none;
     background: #fad0ec;

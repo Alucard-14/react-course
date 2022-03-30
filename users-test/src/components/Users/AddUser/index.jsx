@@ -13,7 +13,10 @@ const AddUser = (props) => {
   return (
     <form onSubmit={handleAddUser}>
       {addUserProps.map((inputProps) => (
-        <FormInput {...inputProps} />
+        <FormInput
+          key={`add-user-form-input-${inputProps.id}`}
+          {...inputProps}
+        />
       ))}
       <button type='submit'></button>
     </form>

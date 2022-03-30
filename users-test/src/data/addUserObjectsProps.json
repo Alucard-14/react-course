@@ -1,0 +1,4 @@
+[
+  { "id": "username", "label": "Username", "type": "text" },
+  { "id": "age", "label": "Age (Years)", "type": "number" }
+]

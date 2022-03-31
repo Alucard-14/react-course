@@ -8,7 +8,7 @@ const UsersList = ({ users }) => {
       <ul className='list-none p-4'>
         {users.map(({ username, age }) => (
           <li
-            key={`users-list-item-${username}-${Math.random()}`}
+            key={`users-list-item-${username}-${Math.random().toString()}`}
             className='border border-solid border-[#ccc] my-2 mx-0 p-2'>
             {username} ({age} years old)
           </li>

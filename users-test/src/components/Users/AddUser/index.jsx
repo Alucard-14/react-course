@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import FormInput from '../../UI/Form/Input';
+import FormInput from '../../UI/Input';
 
 import addUserProps from '../../../data/addUserObjectsProps.json';
 import Button from '../../UI/Button';
 
-const defaultInputValues = { username: '', age: '' };
+import defaultInputValues from '../../../data/defaultInputUserValues.json';
 
-const AddUser = (props) => {
+const AddUser = ({ onAddUser }) => {
   const [inputValues, setInputValues] = useState(defaultInputValues);
 
   const handleAddUser = (e) => {
@@ -16,8 +16,10 @@ const AddUser = (props) => {
 
     const { username, age } = inputValues;
 
-    if (username.trim().length !== 0 && age.trim().length !== 0 && +age >= 1)
+    if (username.trim().length !== 0 && age.trim().length !== 0 && +age >= 1) {
+      onAddUser(inputValues);
       setInputValues(defaultInputValues);
+    }
   };
 
   const handleChangeInput = ({ target: { value } }, field) => {
@@ -39,6 +41,6 @@ const AddUser = (props) => {
   );
 };
 
-AddUser.propTypes = {};
+AddUser.propTypes = { onAddUser: PropTypes.func };
 
 export default AddUser;

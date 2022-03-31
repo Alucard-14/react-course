@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const FormInput = ({ id, label, value, onChange, type = 'text' }) => {
   return (
-    <div>
+    <>
       <label className='block font-bold mb-2' htmlFor={id}>
         {label}
       </label>
@@ -11,7 +11,7 @@ const FormInput = ({ id, label, value, onChange, type = 'text' }) => {
         className='block w-full border border-solid border-[color:#ccc] p-[0.15rem] mb-2 focus:outline-none focus:border-[color:#4f005f]'
         {...{ id, type, value, onChange }}
       />
-    </div>
+    </>
   );
 };
 

@@ -11,7 +11,7 @@ const Modal = ({ title, message, type = 'basic', onConfirm }) => {
   const modalClass = `fixed top-[30vh] left-[10%] w-[80%] z-[100] overflow-hidden md:left-[calc(50%-20rem)] md:w-[40rem] ${cssTypeClass}`;
 
   return (
-    <div>
+    <>
       <div
         className='fixed top-0 left-0 w-full h-screen z-10 bg-[rgba(0,0,0,0.75)]'
         onClick={onConfirm}
@@ -27,7 +27,7 @@ const Modal = ({ title, message, type = 'basic', onConfirm }) => {
           <Button onClick={onConfirm}>Ok</Button>
         </footer>
       </Card>
-    </div>
+    </>
   );
 };
 

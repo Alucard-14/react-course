@@ -1,0 +1,11 @@
+.error {
+  @apply bg-red-200;
+}
+
+.error header {
+  @apply bg-red-900;
+}
+
+.error button {
+  @apply bg-red-900 border-red-900 hover:bg-red-700 hover:border-red-700 active:bg-red-700 active:border-red-700;
+}

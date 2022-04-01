@@ -29,7 +29,7 @@ Overlay.propTypes = {
   type: PropTypes.string,
   title: PropTypes.string,
   message: PropTypes.string,
-  onConfirm: PropTypes.string,
+  onConfirm: PropTypes.func,
 };
 
 export default Overlay;

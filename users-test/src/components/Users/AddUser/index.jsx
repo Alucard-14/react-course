@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import FormInput from '../../UI/Input';
@@ -6,23 +6,26 @@ import FormInput from '../../UI/Input';
 import addUserProps from '../../../data/addUserObjectsProps.json';
 import Button from '../../UI/Button';
 
-import defaultInputValues from '../../../data/defaultInputUserValues.json';
 import Card from '../../UI/Card';
 import Modal from '../../UI/Modal';
 
 const AddUser = ({ onAddUser }) => {
-  const [inputValues, setInputValues] = useState(defaultInputValues);
-  const [error, setError] = useState();
+  const nameInputRef = useRef(null);
+  const ageInputRef = useRef(null);
+
+  const [error, setError] = useState(null);
+
+  const refs = { username: nameInputRef, age: ageInputRef };
 
   const handleAddUser = (e) => {
     e.preventDefault();
 
-    const { username, age } = inputValues;
+    const username = nameInputRef.current.value;
+    const age = ageInputRef.current.value;
 
-    if (username.trim().length !== 0 && age.trim().length !== 0 && +age >= 1) {
-      onAddUser(inputValues);
-      setInputValues(defaultInputValues);
-    } else if (username.trim().length === 0 || age.trim().length === 0)
+    if (username.trim().length !== 0 && age.trim().length !== 0 && +age >= 1)
+      onAddUser({ username, age });
+    else if (username.trim().length === 0 || age.trim().length === 0)
       setError({
         title: 'Invalid Input',
         message: 'Please enter a valid name and age (non-empty values).',
@@ -34,13 +37,7 @@ const AddUser = ({ onAddUser }) => {
       });
   };
 
-  const handleChangeInput = ({ target: { value } }, field) => {
-    setInputValues((prevInputValue) => ({ ...prevInputValue, [field]: value }));
-  };
-
-  const handleModalCancelClick = () => {
-    setError(null);
-  };
+  const handleModalCancelClick = () => setError(null);
 
   return (
     <Card className='my-8 mx-auto p-4 w-[90%] max-w-[40rem]'>
@@ -50,10 +47,9 @@ const AddUser = ({ onAddUser }) => {
       <form onSubmit={handleAddUser}>
         {addUserProps.map((inputProps) => (
           <FormInput
-            {...inputProps}
+            {...{ ...inputProps }}
             key={`add-user-form-input-${inputProps.id}`}
-            value={inputValues[inputProps.id]}
-            onChange={(e) => handleChangeInput(e, inputProps.id)}
+            inputRef={refs[inputProps.id]}
           />
         ))}
         <Button type='submit'>Add User</Button>

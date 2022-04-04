@@ -4,23 +4,21 @@ import Button from '../Button';
 
 import './Modal.css';
 
-const Modal = (props) => {
+const Modal = ({ onClick }) => {
   return (
     <div>
       <div className='backdrop' />
       <div className='modal'>
         <p>Holiwis.</p>
-        <Button className='btn--alt' label='Cancelar' onClick={props.onClick} />
-        <Button label='Confirmar' onClick={props.onClick} />
+        <Button className='btn--alt' label='Cancelar' onClick={onClick} />
+        <Button label='Confirmar' onClick={onClick} />
       </div>
     </div>
   );
 };
 
 Modal.propTypes = {
-  props: PropTypes.shape({
-    onClick: PropTypes.func,
-  }).isRequired,
+  onClick: PropTypes.func,
 };
 
 export default Modal;

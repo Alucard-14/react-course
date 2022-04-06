@@ -9,16 +9,19 @@ import { loginReducer, initialFormState } from './loginReducer';
 const Login = (props) => {
   const [form, dispatchForm] = useReducer(loginReducer, initialFormState);
 
+  const {
+    email: { isValid: isEmailValid },
+    pass: { isValid: isPassValid },
+  } = form;
+
   useEffect(() => {
     const formValidationTimeout = setTimeout(
       () => dispatchForm({ type: 'FORM_VALIDATION' }),
       100,
     );
 
-    return () => {
-      clearTimeout(formValidationTimeout);
-    };
-  }, [form.email.isValid, form.pass.isValid]);
+    return () => clearTimeout(formValidationTimeout);
+  }, [isEmailValid, isPassValid]);
 
   const emailChangeHandler = ({ target: { value } }) => {
     dispatchForm({ type: 'EMAIL_INPUT', value: value });

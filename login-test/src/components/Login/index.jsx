@@ -1,11 +1,14 @@
 import React, { useEffect, useReducer } from 'react';
 
+import { useAuthContext } from '../../store/AuthContext';
+
 import Card from '../UI/Card';
-import classes from './Login.module.css';
 import Button from '../UI/Button';
+import Input from '../UI/Input';
 
 import { loginReducer, initialFormState } from './loginReducer';
-import { useAuthContext } from '../../store/AuthContext';
+
+import classes from './Login.module.css';
 
 const Login = () => {
   const { loginHandler } = useAuthContext();
@@ -50,32 +53,24 @@ const Login = () => {
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
-        <div
-          className={`${classes.control} ${
-            form.email.isValid === false ? classes.invalid : ''
-          }`}>
-          <label htmlFor='email'>E-Mail</label>
-          <input
-            type='email'
-            id='email'
-            value={form.email.value}
-            onChange={emailChangeHandler}
-            onBlur={validateEmailHandler}
-          />
-        </div>
-        <div
-          className={`${classes.control} ${
-            form.pass.isValid === false ? classes.invalid : ''
-          }`}>
-          <label htmlFor='password'>Password</label>
-          <input
-            type='password'
-            id='password'
-            value={form.pass.value}
-            onChange={passwordChangeHandler}
-            onBlur={validatePasswordHandler}
-          />
-        </div>
+        <Input
+          label='E-Mail'
+          type='email'
+          id='email'
+          value={form.email.value}
+          isValid={form.email.isValid}
+          onChange={emailChangeHandler}
+          onBlur={validateEmailHandler}
+        />
+        <Input
+          label='Password'
+          type='password'
+          id='password'
+          value={form.pass.value}
+          isValid={form.pass.isValid}
+          onChange={passwordChangeHandler}
+          onBlur={validatePasswordHandler}
+        />
         <div className={classes.actions}>
           <Button
             type='submit'

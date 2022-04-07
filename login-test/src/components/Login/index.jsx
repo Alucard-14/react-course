@@ -5,8 +5,11 @@ import classes from './Login.module.css';
 import Button from '../UI/Button';
 
 import { loginReducer, initialFormState } from './loginReducer';
+import { useAuthContext } from '../../store/AuthContext';
 
-const Login = (props) => {
+const Login = () => {
+  const { loginHandler } = useAuthContext();
+
   const [form, dispatchForm] = useReducer(loginReducer, initialFormState);
 
   const {
@@ -41,7 +44,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(form.email.value, form.pass.value);
+    loginHandler(form.email.value, form.pass.value);
   };
 
   return (

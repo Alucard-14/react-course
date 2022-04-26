@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import mealImg from '../../../assets/meals2.jpg';
 
 import './Header.css';
+import CartButton from './CardButton';
 
 const Header = () => {
   return (
     <>
       <header className='fixed top-0 left-0 w-full h-20 bg-[#8a2b06] text-white flex justify-between items-center py-0 px-[10%] shadow-[0_2px_8px_rgba(0,0,0,0.25)] z-10'>
         <h1>Meals</h1>
-        <button>Cart</button>
+        <CartButton />
       </header>
       <div className='w-full h-[25rem] z-0 overflow-hidden'>
         <img

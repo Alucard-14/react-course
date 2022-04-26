@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import mealImg from '../../../assets/meals.jpg';
+import mealImg from '../../../assets/meals2.jpg';
+
+import './Header.css';
 
 const Header = () => {
   return (
@@ -12,7 +14,8 @@ const Header = () => {
       </header>
       <div className='w-full h-[25rem] z-0 overflow-hidden'>
         <img
-          className='w-full h-full object-cover -rotate-[5deg] -translate-y-20 -translate-x-4'
+          // className='w-full h-full object-cover -rotate-[5deg] -translate-y-20 -translate-x-4'
+          className={'buffet-img'}
           src={mealImg}
           alt='buffet'
         />

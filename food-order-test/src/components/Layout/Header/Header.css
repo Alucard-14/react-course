@@ -1,0 +1,5 @@
+.buffet-img {
+  @apply w-[110%] h-full object-cover;
+
+  transform: rotateZ(-5deg) translateY(-4rem) translateX(-1rem);
+}
